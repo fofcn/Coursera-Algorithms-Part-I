@@ -4,6 +4,8 @@
  *  Last modified:     October 16, 1842
  **************************************************************************** */
 
+import edu.princeton.cs.algs4.WeightedQuickUnionUF;
+
 public class Percolation {
     private final int cube;
     private int[] normalGrid;
@@ -31,7 +33,6 @@ public class Percolation {
         fullGrid = new int[cube + 1];
         fullSize = new int[cube + 1];
         initializeGrid(fullGrid, fullSize, cube + 1, false);
-
     }
 
     // opens the site (row, col) if it is not open already
