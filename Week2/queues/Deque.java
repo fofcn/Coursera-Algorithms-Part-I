@@ -155,6 +155,17 @@ public class Deque<Item> implements Iterable<Item> {
         deque.addFirst(1);
         StdOut.println("empty deque add first test.");
 
+        Integer item;
+        deque = new Deque<>();
+        deque.addFirst(2);
+        deque.addFirst(1);
+        deque.addLast(3);
+        deque.addLast(4);
+        while ((item = deque.removeFirst()) != null) {
+            StdOut.print(item + " ");
+        }
+        StdOut.println();
+
         deque = new Deque<>();
         deque.addLast( 1);
         StdOut.println("empty deque add last test.");
@@ -164,7 +175,7 @@ public class Deque<Item> implements Iterable<Item> {
         StdOut.println("assert: after add 7 items, expect deque.size() == 7, actual result: " + (deque.size() == 7));
         StdOut.println("assert: after add 7 items, expect deque.isEmpty() == false, actual result: " + deque.isEmpty());
         // test remove first
-        Integer item;
+
         while ((item = deque.removeFirst()) != null) {
             StdOut.print(item + " ");
         }
@@ -207,9 +218,11 @@ public class Deque<Item> implements Iterable<Item> {
 
         try {
             iterator.remove();
-        } catch (NoSuchElementException e) {
+        } catch (UnsupportedOperationException e) {
             e.printStackTrace();
         }
+
+
     }
 
     private static Deque<Integer> newDequeAddFirst(int size) {
