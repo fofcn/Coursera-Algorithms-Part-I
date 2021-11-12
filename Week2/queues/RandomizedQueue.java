@@ -102,6 +102,9 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
         }
 
         public Item next() {
+            if (idx == 0) {
+                throw new NoSuchElementException();
+            }
             int rndIdx = StdRandom.uniform(idx);
             Item item = copy[rndIdx];
             copy[rndIdx] = null;
