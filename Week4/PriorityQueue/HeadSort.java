@@ -6,18 +6,26 @@
 
 public class HeadSort {
 
+    // 算法运行时间分析： 2nlg(n)  theta(nlg(n))
     public static void sort(Comparable[] a) {
         int n = a.length - 1;
         // 自底向上的构建一个最大堆
+        // 算法分析 n  / 2
         for (int i = n / 2; i >= 1; i--) {
+            // 下沉操作lg(n)
             sink(a, i, n);
         }
+        // 总结： theta(nlg(n))
 
         // 删除最大堆中的第一个元素，并将最后一个元素放到第一个元素位置后对第一个元素执行下沉操作
+        // n
         while (n >= 1) {
+            // n
             exch(a, 1, n);
+            // lg(n)
             sink(a, 1, --n);
         }
+        // 总结： theta(nlg(n))
     }
 
     private static void sink(Comparable[] a, int k, int n) {
