@@ -29,7 +29,7 @@ public class MinPQ<Key extends Comparable<Key>> {
     }
 
     /**
-     * 删除最大的元素
+     * 删除最小的元素
      * 根据堆的特性，第一个元素是最大的，取出第一个元素
      * 然后将最后一个元素放到第一个元素位置。
      * 我们将第一个元素进行降级操作
@@ -38,7 +38,7 @@ public class MinPQ<Key extends Comparable<Key>> {
      *
      * 运行时间分析： lg(n)
      */
-    public Key delMax() {
+    public Key delMin() {
         Key max = pq[1];
         exch(1, n--);
         sink(1);
