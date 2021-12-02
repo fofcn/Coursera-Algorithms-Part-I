@@ -63,11 +63,11 @@ public class Point implements Comparable<Point> {
         if (this.x == that.x && this.y == that.y) {
             return Double.NEGATIVE_INFINITY;
         } else {
-            if (this.y - that.y == 0) {
+            if (this.y == that.y) {
                 return 0.0D;
             }
 
-            if (this.x - that.x == 0) {
+            if (this.x == that.x) {
                 return Double.POSITIVE_INFINITY;
             }
         }
@@ -112,9 +112,7 @@ public class Point implements Comparable<Point> {
     public Comparator<Point> slopeOrder() {
         return new Comparator<Point>() {
             public int compare(Point o1, Point o2) {
-                // this点与o1的斜率
                 double thisSlop = slopeTo(o1);
-                // this点与o2的斜率
                 double thatSlop = slopeTo(o2);
 
                 return thisSlop - thatSlop == 0D ? 0 : thisSlop - thatSlop > 0 ? 1 : -1 ;
