@@ -87,7 +87,7 @@ public class FastCollinearPoints {
 
     private void addSegment(int i, List<Point> foundPoints) {
         if (foundPoints.size() >= 3) {
-            num++;
+
             foundPoints.add(points[i]);
             Collections.sort(foundPoints);
 
@@ -98,8 +98,9 @@ public class FastCollinearPoints {
                 return;
             }
             duplicateTest.add(key);
-
             Collections.sort(duplicateTest);
+
+            num++;
             LineSegment lineSegment = new LineSegment(foundPoints.get(0),
                                                       foundPoints.get(foundPoints.size() - 1));
             segmentList.add(lineSegment);
