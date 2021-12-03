@@ -11,14 +11,13 @@ import edu.princeton.cs.algs4.StdOut;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.List;
 
 public class FastCollinearPoints {
     private int num = 0;
     private Point[] points;
     private List<LineSegment> segmentList;
-    private final HashSet<String> duplicateTest = new HashSet<>();
+    private final List<String> duplicateTest = new ArrayList<>();
     // finds all line segments containing 4 or more points
     public FastCollinearPoints(Point[] points) {
         if (points == null) {
@@ -91,13 +90,16 @@ public class FastCollinearPoints {
             num++;
             foundPoints.add(points[i]);
             Collections.sort(foundPoints);
+
             Point start = foundPoints.get(0);
             Point end = foundPoints.get(foundPoints.size() - 1);
             String key = start.toString() + end.toString();
-            if (duplicateTest.contains(key)) {
+            if (Collections.binarySearch(duplicateTest, key) >= 0) {
                 return;
             }
             duplicateTest.add(key);
+
+            Collections.sort(duplicateTest);
             LineSegment lineSegment = new LineSegment(foundPoints.get(0),
                                                       foundPoints.get(foundPoints.size() - 1));
             segmentList.add(lineSegment);
