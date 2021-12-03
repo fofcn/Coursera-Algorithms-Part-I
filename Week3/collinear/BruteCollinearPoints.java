@@ -5,6 +5,7 @@
  **************************************************************************** */
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class BruteCollinearPoints {
@@ -16,6 +17,20 @@ public class BruteCollinearPoints {
     public BruteCollinearPoints(Point[] points) {
         if (points == null) {
             throw new IllegalArgumentException();
+        }
+
+        for (Point point : points) {
+            if (point == null) {
+                throw new IllegalArgumentException();
+            }
+        }
+
+        // 重复数据直接报错
+        Arrays.sort(points);
+        for (int i = 0; i < points.length - 1; i++) {
+            if (points[i].compareTo(points[i + 1]) == 0) {
+                throw new IllegalArgumentException();
+            }
         }
 
         this.points = points;

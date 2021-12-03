@@ -115,7 +115,7 @@ public class Point implements Comparable<Point> {
                 double thisSlop = slopeTo(o1);
                 double thatSlop = slopeTo(o2);
 
-                return thisSlop - thatSlop == 0D ? 0 : thisSlop - thatSlop > 0 ? 1 : -1 ;
+                return thisSlop == thatSlop ? 0 : thisSlop - thatSlop > 0 ? 1 : -1 ;
             }
         };
     }
